@@ -12,4 +12,14 @@ studentController.getAll = async(req, res) => {
     })) 
 
 };
+
+studentController.getOne = async(req, res) => {
+    studentDAO.getOne(req.params.dni)
+    .then(student =>{
+        res.json(student)
+    })
+    .catch(err => res.json({
+        status: "Request failed"
+    }))
+}
 module.exports = studentController;

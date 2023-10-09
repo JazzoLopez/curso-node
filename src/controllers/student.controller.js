@@ -1,101 +1,14 @@
-// const studentDAO = require('../DAO/student.dao');
-
-// const studentController = {}
-
-// studentController.getAll = async (req, res) => {
-//     studentDAO.getAll()
-//         .then(students => {
-//             res.json(students)//Si fue exitoso devuelve los estudiantes
-//         })
-//         .catch(err => res.json({
-//             status: "request failed"//Si tenemos un error devolvemos el error 
-//         }))
-
-// };
-
-// studentController.getOne = async (req, res) => {
-//     studentDAO.getOne(req.params.dni)
-//         .then(student => {
-//             if (student != null) {
-//                 res.json(student);
-//             }
-//             else {
-//                 res.json({
-//                     status: "Student not found"
-//                 })
-//             }
-
-//         })
-//         .catch(err => {
-//             res.json({
-//                 status: "Request failed"
-//             })
-//         })
-// }
-
-// studentController.insertOne = async (req, res) => {
-//     studentDAO.insertOne(req.body)
-//         .then(result => {
-//             res.json({
-//                 status: result
-//             })
-//         })
-//         .catch(err => {
-//             res.json({
-//                 status: "Request failed"
-//             })
-//         });
-// }
-
-// studentController.updateOne = async (req, res) => {
-//     studentDAO.updateOne(req.params.dni, req.body)
-//         .then(result => {
-//             res.json({
-//                 status: result
-//             })
-//         })
-//         .catch(err => {
-//             res.json({
-//                 status: "Request failed"
-//             })
-//         });
-// }
-
-
-
-// studentController.deleteOne = async (req, res) => {
-//     studentDAO.deleteOne(req.params.dni)
-//         .then(result => {
-//             res.json({
-//                 status: result
-//             })
-//                 .catch(err => {
-//                     res.json({
-//                         status: "Request failed"
-//                     })
-//                 })
-//         })
-// }
-
-
-// module.exports = studentController;
-
-// //consultas paginadas es preferible que traer todo de una;
-
-// //Tarea de practica Crear nuevo modelo, de todo,
-
-
 const studentDAO = require('../DAO/student.dao');
 const studentController = {}
 
 studentController.getAll = async(req, res) => {
     studentDAO.getAll()
     .then(students => {
-        res.json(students);
+        res.json(students); //Si la busqueda es exitosa nos devuelve a todos
     })
     .catch(err => {
         res.json({
-            status: "request failed"
+            status: "request failed" //si hay un error en la busqueda nos retorna un json con un mensaje de error
         })
     });
     
@@ -104,13 +17,13 @@ studentController.getAll = async(req, res) => {
 
 
 studentController.getOne = async(req, res) => {
-    studentDAO.getOne(req.params.dni)
+    studentDAO.getOne(req.params.dni)  //El parametro de busqueda es mediante el dni
     .then(student => {
-        if(student != null)
-            res.json(student)
+        if(student != null) //Si hace match con alguno...
+            res.json(student) //trae unicamente a ese
         else
             res.json({
-                status: "not found"
+                status: "not found" //SI no regresa un mensaje de que no se encontro
         });
     })
     .catch(err => {
@@ -121,10 +34,10 @@ studentController.getOne = async(req, res) => {
 
 
 studentController.insertOne = async(req, res) => {
-    studentDAO.insertOne(req.body)
+    studentDAO.insertOne(req.body) //Requerimos el cuerpo del mensaje, un json en thunder client o alguno por mientras
     .then(result => {
         res.json({
-            status: result
+            status: result  //Si funciona retorna un json result 
         })
     })
     .catch(err => {
@@ -136,7 +49,7 @@ studentController.insertOne = async(req, res) => {
 }
 
 studentController.updateOne = async(req, res) => {
-    studentDAO.updateOne(req.params.dni, req.body)
+    studentDAO.updateOne(req.params.dni, req.body) //Para actualizar necesitamos el identificador y el cuerpo para saber que debemos cambiar 
     .then(result => {
         res.json({
             status: result
@@ -151,7 +64,7 @@ studentController.updateOne = async(req, res) => {
 }
 
 studentController.deleteOne = async(req, res) => {
-    studentDAO.deleteOne(req.params.dni)
+    studentDAO.deleteOne(req.params.dni) //Para eliminar un elemento se filtran por el dni 
     .then(result => {
         res.json({
             status: result
@@ -166,4 +79,7 @@ studentController.deleteOne = async(req, res) => {
 }
 
 
-module.exports = studentController;
+module.exports = studentController; //Exportamos los controladores
+
+ //consultas paginadas es preferible que traer todo de una;
+ //Tarea de practica Crear nuevo modelo, de todo,

@@ -1,5 +1,4 @@
-const { Schema, model } = require('mongoose');
-
+const {Schema, model} = require('mongoose');
 const studentSchema = new Schema({
     dni: {
         type: Number,
@@ -10,9 +9,9 @@ const studentSchema = new Schema({
     lastname: String,
     average: Number,
     grade: Number
-}, {
+},{
     versionKey: false,
     timestamps: true
 });
 
-module.exports = model('student', studentSchema); //Si no existe la conexion la crea
+module.exports = model('student', studentSchema);//Si no existe la conexion la crea

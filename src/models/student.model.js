@@ -14,4 +14,6 @@ const studentSchema = new Schema({
     timestamps: true
 });
 
+
+
 module.exports = model('student', studentSchema);//Si no existe la conexion la crea

@@ -9,4 +9,6 @@ router.post('/insertOne/teacher', studentController.insertOne);
 router.put('/updateOne/teacher', teacherController.updateOne);
 router.delete('/deleteOne/teacher', teacherController.deleteOne);
 
+
+//Exportamos
 module.exports = router;

@@ -2,6 +2,7 @@ const express = require('express'); //TRAEMOS A EXPRESS
 //Cada instancia de express sera una aplicación
 const morgan = require ('morgan');
 const studentRouter = require('./routes/student.router');
+const teacherRouter = require('./routes/teacher.router')
 
 const app = express(); //Instanciamos y creamos la app del servidor
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false})); //Para identificar que analizaremos datos planos
 app.use(morgan('dev'));
 app.use(studentRouter);
+app.use(teacherRouter);
 
 module.exports = app;
 

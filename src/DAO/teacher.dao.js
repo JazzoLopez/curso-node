@@ -1,8 +1,13 @@
 const Teacher = require('../models/teacher.model');
 const teacherDAO = {};
 
-teacherDAO.getAll = async () => {
-    const teachers = await Teacher.find();
+// teacherDAO.getAll = async () => {
+//     const teachers = await Teacher.find();
+//     return teachers;
+// }
+
+teacherDAO.getAll = async (workerNumber) => {
+    const teachers = await Teacher.find({},{"workerNumber":1,"name":1,"lastname":1, "_id":0})
     return teachers;
 }
 

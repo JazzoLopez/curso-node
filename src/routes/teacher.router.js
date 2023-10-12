@@ -4,10 +4,10 @@ const {Router} = require('express');
 const router = Router();
 
 router.get('/getAll/teacher', teacherController.getAll);
-router.get('/getOne/teacher', teacherController.getOne);
-router.post('/insertOne/teacher', studentController.insertOne);
-router.put('/updateOne/teacher', teacherController.updateOne);
-router.delete('/deleteOne/teacher', teacherController.deleteOne);
+router.get('/getOne/teacher/:workerNumber', teacherController.getOne);
+router.post('/insertOne/teacher', teacherController.insertOne);
+router.put('/updateOne/teacher/:workerNumber', teacherController.updateOne);
+router.delete('/deleteOne/teacher/:workerNumber', teacherController.deleteOne);
 
 
 //Exportamos

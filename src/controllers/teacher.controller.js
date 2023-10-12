@@ -57,16 +57,17 @@ teacherController.updateOne = async (req, res) => {
 }
 
 teacherController.deleteOne = async (req, res) => {
-    teacher.teacherDAO.deleteOne(req.params.workerNumber)
-        .then(result => {
-            res.json({
-                status: result
-            })
-                .catch(err => {
-                    res.json({
-                        status: "Request failed"
-                    });
-                })
+    teacherDAO.deleteOne(req.params.workerNumber)
+    .then(result => {
+        res.json({
+            status: result
         })
+    })
+    .catch(err => {
+        res.json({
+            status: "request failed"
+        })
+    });
+
 }
 module.exports = teacherController;

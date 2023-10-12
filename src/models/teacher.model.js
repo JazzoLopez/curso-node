@@ -8,7 +8,7 @@ const teacherSchema = new Schema({
     name: String,
     lastname: String,
     subject: String,
-    email: {
+    email:{
         type: String,
         unique: true
     },
@@ -16,6 +16,6 @@ const teacherSchema = new Schema({
 }, {
     versionKey: false,
     timestamps: true
-})
+});
 
 module.exports = model('teacher',teacherSchema);

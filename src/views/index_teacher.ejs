@@ -26,13 +26,12 @@
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Estudiantes</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                   
+                    <a class="navbar-brand" href="#">Docentes</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                 </div>
             </nav>
         </div>
@@ -42,17 +41,18 @@
             <div class="col-lg-5"> <!--tamaño de 5 columnas-->
                 <div class="card">
                     <div class="card-body">
-                        <form action="/api/students/insertOne" method="post"> <!-- Create-->
+                        <form action="/api/teachers/insertOne" method="post"> <!-- Create-->
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="txt_matricula" class="form-label">Matrícula:</label>
-                                    <input type="number" id="txt_matricula" name="dni" class="form-control">
+                                    <label for="txt_employeenumber" class="form-label" required>Numero de trabajador:</label>
+                                    <input type="text" id="txt_name" name="employeenumber" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
+                                
                                 <div class="col-lg-6">
                                     <label for="txt_name" class="form-label" required>Nombre:</label>
-                                    <input type="text" id="name" name="name" class="form-control">
+                                    <input type="text" id="txt_name" name="name" class="form-control">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="txt_lastname" class="form-label">Apellidos:</label>
@@ -61,20 +61,32 @@
                             </div>
                             <div class="row mb-2">
                                 <div class="col-lg-6">
-                                    <label for="txt_promedio" class="form-label">Promedio:</label>
-                                    <input type="text" id="txt_average" name="average" class="form-control">
+                                    <label for="txt_profession" class="form-label">Profesión:</label>
+                                    <input type="text" id="txt_profession" name="profession" class="form-control">
                                 </div>
                                 <div class="col-lg-6">
-                                    <label for="txt_grade" class="form-label">Grado:</label>
-                                    <input type="number" id="txt_grade" name="grade" class="form-control">
+                                    <label for="txt_area" class="form-label">Area:</label>
+                                    <input type="text" id="txt_area" name="area" class="form-control">
                                 </div>
                             </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <button class="btn btn-primary mb-2">Guardar</button>
-                                    </div>
+
+                            <div class="row row mb-2">
+                                <div class="col-lg-6">
+                                    <label for="txt_salario" class="form-label">Salario:</label>
+                                    <input type="number" id="txt_salario" name="salario" class="form-control">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="txt_grade" class="form-label">Correo:</label>
+                                    <input type="text" id="txt_email" name="email" class="form-control">
                                 </div>
 
+                            </div>
+
+                            <div class="row ">
+                                <div class="col-lg-6 ">
+                                    <button class="btn btn-primary mb-2">Guardar</button>
+                                </div>
+                            </div>
                     </div>
                     </form>
                 </div>
@@ -83,32 +95,36 @@
                 <table class="table table-light table-striped table-bordered"><!-- fila con color, fila sin color-->
                     <thead>
                         <tr>
-                            <th>Matrícula</th>
-                            <th>Nombre</th>
+                            <th>No.trabajador</th>
+                            <th>Nombre </th>
                             <th>Apellidos</th>
-                            <th colspan="2">Opciones</th>
+                            <th>Area</th>
+                            <th colspan="2">acciones</th>
+
+                        
                         </tr>
                     </thead>
                     <tbody>
-                        <% students.forEach(function(student){ %>  <!--Read-->
+                        <% teachers.forEach(function(teacher){ %> <!--Read-->
                             <tr>
                                 <td>
-                                    <%= student.dni %>
+                                    <%= teacher.employeenumber %>
                                 </td>
                                 <td>
-                                    <%= student.name %>
+                                    <%= teacher.name %>  
                                 </td>
+                                <td><%= teacher.lastname%></td>
+                                <td><%= teacher.area%></td>
+                               
+                              
                                 <td>
-                                    <%= student.lastname%>
-                                </td>
-                                <td>
-                                    <a href="/api/students/getOne/<%= student.dni%>" class="btn btn-success">
+                                    <a href="/api/teachers/getOne/<%= teacher.employeenumber%>" class="btn btn-success">
                                         <i class="material-icons">edit</i> <!--Update-->
-                                    </a>                                    
+                                    </a>
                                 </td>
-                            
+
                                 <td>
-                                    <a href="/api/students/deleteOne/<%= student.dni%>" class="btn btn-danger">
+                                    <a href="/api/teachers/deleteOne/<%= teacher.employeenumber%>" class="btn btn-danger">
                                         <i class="material-icons">delete</i> <!-- Delete-->
                                     </a>
                                 </td>

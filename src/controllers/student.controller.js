@@ -51,9 +51,7 @@ studentController.insertOne = async(req, res) => {
 studentController.updateOne = async(req, res) => {
     studentDAO.updateOne(req.params.dni, req.body) //Para actualizar necesitamos el identificador y el cuerpo para saber que debemos cambiar 
     .then(result => {
-        res.json({
-            status: result
-        })
+        res.redirect('/api/students/getAll')
     })
     .catch(err => {
         res.json({

@@ -13,8 +13,7 @@ const teacherSchema = new Schema({
     email:{   //mio
         type: String,
         unique: true
-    },
-    tel: String  //mio
+    }
 }, {
     versionKey: false,
     timestamps: true

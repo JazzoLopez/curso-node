@@ -16,13 +16,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
-    <title>Control-Escolar</title>
+    <title>Control Escolar</title>
 </head>
 
 <body>
-
     <div class="container">
-        <div class="row mb-4"> <!-- Nueva fila-->
+        <div class="row mb-3">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
@@ -65,94 +64,50 @@
                     </div>
                 </div>
             </nav>
+            <!-- end navbar-->
         </div>
-        <!-- end navbar -->
-
         <div class="row">
-            <div class="col-lg-5"> <!--tamaño de 5 columnas-->
+            <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/api/students/insertOne" method="post"> <!-- Create-->
+                        <form action="/api/students/updateOne" method="post">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="txt_matricula" class="form-label">Matrícula:</label>
-                                    <input type="number" id="txt_matricula" name="dni" class="form-control">
+                                    <label for="txt_dni" class="form-label">Matricula:</label>
+                                    <input type="number" name="dni" id="txt_dni" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <label for="txt_name" class="form-label" required>Nombre:</label>
-                                    <input type="text" id="name" name="name" class="form-control">
+                                    <label for="txt_name" class="form-label">Nombre:</label>
+                                    <input type="text" name="name" id="txt_name" class="form-control">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="txt_lastname" class="form-label">Apellidos:</label>
-                                    <input type="text" id="txt_lastname" name="lastname" class="form-control">
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col-lg-6">
-                                    <label for="txt_promedio" class="form-label">Promedio:</label>
-                                    <input type="text" id="txt_average" name="average" class="form-control">
-                                </div>
-                                <div class="col-lg-6">
-                                    <label for="txt_grade" class="form-label">Grado:</label>
-                                    <input type="number" id="txt_grade" name="grade" class="form-control">
+                                    <input type="text" name="lastname" id="txt_lastname" class="form-control">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button class="btn btn-primary">Guardar</button>
+                                    <label for="txt_average">Promedio:</label>
+                                    <input type="text" name="average" id="txt_average" class="form-control">
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="txt_grade">Grado:</label>
+                                    <input type="number" name="grade" id="txt_grade" class="form-control">
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <button class="btn btn-outline-warning">Guardar</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    </form>
                 </div>
             </div>
-            <div class="col-lg-7">
-                <table class="table table-light table-striped table-bordered"><!-- fila con color, fila sin color-->
-                    <thead>
-                        <tr>
-                            <th>Matrícula</th>
-                            <th>Nombre</th>
-                            <th>Apellidos</th>
-                            <th colspan="2">Opciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% students.forEach(function(student){ %>  <!--Read-->
-                            <tr>
-                                <td>
-                                    <%= student.dni %>
-                                </td>
-                                <td>
-                                    <%= student.name %>
-                                </td>
-                                <td>
-                                    <%= student.lastname%>
-                                </td>
-                                <td>
-                                    <a href="" class="btn btn-success">
-                                        <i class="material-icons">edit</i> <!--Update-->
-                                    </a>                                    
-                                </td>
-                            
-                                <td>
-                                    <a href="/api/students/deleteOne/<%= student.dni%>" class="btn btn-danger">
-                                        <i class="material-icons">delete</i> <!-- Delete-->
-                                    </a>
-                                </td>
-                            </tr>
-                            <% })%>
-                    </tbody>
-
-                </table>
-            </div>
         </div>
-
     </div>
-    </div>
-    <footer><!--Jazziel Rodriguez Lopez--></footer>
 </body>
 
 </html>

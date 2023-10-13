@@ -65,9 +65,7 @@ studentController.updateOne = async(req, res) => {
 studentController.deleteOne = async(req, res) => {
     studentDAO.deleteOne(req.params.dni) //Para eliminar un elemento se filtran por el dni 
     .then(result => {
-        res.json({
-            status: result
-        })
+        res.redirect(('/api/students/getAll'))
     })
     .catch(err => {
         res.json({

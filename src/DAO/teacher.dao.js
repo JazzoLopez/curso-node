@@ -1,34 +1,36 @@
 const Teacher = require('../models/teacher.model');
 const teacherDAO = {};
 
-// teacherDAO.getAll = async () => {
-//     const teachers = await Teacher.find();
-//     return teachers;
-// }
-
-teacherDAO.getAll = async (workerNumber) => {
-    const teachers = await Teacher.find({},{"workerNumber":1,"name":1,"lastname":1, "_id":0})
+teacherDAO.getAll = async () => {
+    const teachers = await Teacher.find();
     return teachers;
 }
 
-teacherDAO.getOne = async (workerNumber) => {
-    const teacher = await Teacher.findOne({workerNumber:workerNumber});
+// teacherDAO.getAll = async (employeenumber) => {
+//     const teachers = await Teacher.find({},{"employeenumber":1,"name":1,"lastname":1, "_id":0})
+//     return teachers;
+//     //"employeenumber":"Español"  filtrar y mostrar los que tengan la materia de Español
+
+// }
+
+teacherDAO.getOne = async (employeenumber) => {
+    const teacher = await Teacher.findOne({employeenumber:employeenumber});
     return teacher;
 }
 
 teacherDAO.insertOne = async (teacher) => {
-    const teacherSaved = new Teacher(teacher);
+    const teacherSaved = new Teacher(teacher); //instancia 
     await teacherSaved.save();
     return "Teacher saved";
 }
 
-teacherDAO.updateOne = async (workerNumber, teacher) => {
-    await Teacher.updateOne({ workerNumber: workerNumber }, teacher);
+teacherDAO.updateOne = async (employeenumber, teacher) => {
+    await Teacher.updateOne({ employeenumber: employeenumber }, teacher);
     return "Teacher update";
 }
 
-teacherDAO.deleteOne = async (workerNumber) => {
-    await Teacher.deleteOne({ workerNumber: workerNumber });
+teacherDAO.deleteOne = async (employeenumber) => {
+    await Teacher.deleteOne({ employeenumber: employeenumber });
     return "Teacher deleted";
 }
 module.exports =teacherDAO;

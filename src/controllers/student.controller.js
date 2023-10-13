@@ -83,3 +83,4 @@ module.exports = studentController; //Exportamos los controladores
 
  //consultas paginadas es preferible que traer todo de una;
  //Tarea de practica Crear nuevo modelo, de todo,
+//console.log(err); para poder visualizar errores y encontrarlo por capas

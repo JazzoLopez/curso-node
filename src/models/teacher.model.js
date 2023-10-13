@@ -1,18 +1,20 @@
 const { Schema, model } = require('mongoose');
 const teacherSchema = new Schema({
-    workerNumber: {
+    employeenumber: {
         type: Number,
         require: true,
         unique: true
     },
     name: String,
     lastname: String,
-    subject: String,
-    email:{
+    profession:String,
+    area:String,
+    salario:Number,
+    email:{   //mio
         type: String,
         unique: true
     },
-    tel: String
+    tel: String  //mio
 }, {
     versionKey: false,
     timestamps: true

@@ -14,7 +14,7 @@ teacherController.getAll = async (req, res) => {
 }
 
 teacherController.getOne = async (req, res) => {
-    teacherDAO.getOne(req.params.workerNumber)
+    teacherDAO.getOne(req.params.employeenumber)
         .then(teacher => {
             if (teacher != null)
                 res.json(teacher)
@@ -24,7 +24,8 @@ teacherController.getOne = async (req, res) => {
                 });
         })
         .catch(err => {
-            res.json(err);
+            res.json({status:"resuest failed", message:err})
+            
         })
 }
 
@@ -37,13 +38,13 @@ teacherController.insertOne = async (req, res) => {
         })
         .catch(err => {
             res.json({
-                status: "Request failed"
+                status: "Request failed",message:err
             })
         })
 }
 
 teacherController.updateOne = async (req, res) => {
-    teacherDAO.updateOne(req.params.workerNumber, req.body)
+    teacherDAO.updateOne(req.params.employeenumber, req.body)
         .then(result => {
             res.json({
                 status: result
@@ -51,13 +52,13 @@ teacherController.updateOne = async (req, res) => {
         })
         .catch(err => {
             res.json({
-                status: "Request failed"
+                status: "Request failed",message:err
             })
         })
 }
 
 teacherController.deleteOne = async (req, res) => {
-    teacherDAO.deleteOne(req.params.workerNumber)
+    teacherDAO.deleteOne(req.params.employeenumber)
     .then(result => {
         res.json({
             status: result
@@ -65,7 +66,7 @@ teacherController.deleteOne = async (req, res) => {
     })
     .catch(err => {
         res.json({
-            status: "request failed"
+            status: "request failed",message:err
         })
     });
 

@@ -4,7 +4,8 @@ const studentController = {}
 studentController.getAll = async(req, res) => {
     studentDAO.getAll()
     .then(students => {
-        res.json(students); //Si la busqueda es exitosa nos devuelve a todos
+        //res.json(students); //Si la busqueda es exitosa nos devuelve a todos
+        res.render('../src/views/index',{students});
     })
     .catch(err => {
         res.json({
@@ -36,9 +37,7 @@ studentController.getOne = async(req, res) => {
 studentController.insertOne = async(req, res) => {
     studentDAO.insertOne(req.body) //Requerimos el cuerpo del mensaje, un json en thunder client o alguno por mientras
     .then(result => {
-        res.json({
-            status: result  //Si funciona retorna un json result 
-        })
+       res.redirect('/api/students/getAll')
     })
     .catch(err => {
         res.json({

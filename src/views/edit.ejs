@@ -70,38 +70,39 @@
             <div class="col-lg-5">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/api/students/updateOne" method="post">
+                        <form action="/api/students/updateOne" method="get">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="txt_dni" class="form-label">Matricula:</label>
-                                    <input type="number" name="dni" id="txt_dni" class="form-control">
+                                    <input type="number" name="dni" id="txt_dni" class="form-control" value="<%= student.dni %>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="txt_name" class="form-label">Nombre:</label>
-                                    <input type="text" name="name" id="txt_name" class="form-control">
+                                    <input type="text" name="name" id="txt_name" class="form-control" value= "<%= student.name %>" >
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="txt_lastname" class="form-label">Apellidos:</label>
-                                    <input type="text" name="lastname" id="txt_lastname" class="form-control">
+                                    <input type="text" name="lastname" id="txt_lastname" class="form-control" value="<%= student.lastname %>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <label for="txt_average">Promedio:</label>
-                                    <input type="text" name="average" id="txt_average" class="form-control">
+                                    <input type="text" name="average" id="txt_average" class="form-control" value="<%= student.average %>">
                                 </div>
                                 <div class="col-lg-6">
                                     <label for="txt_grade">Grado:</label>
-                                    <input type="number" name="grade" id="txt_grade" class="form-control">
+                                    <input type="number" name="grade" id="txt_grade" class="form-control" value="<%= student.grade %>">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <button class="btn btn-outline-warning">Guardar</button>
+                                    <button class="btn btn-warning mb-2">Actualizar</button>
                                 </div>
                             </div>
+
                         </form>
                     </div>
                 </div>

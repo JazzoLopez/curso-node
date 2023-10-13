@@ -20,8 +20,9 @@ studentController.getAll = async(req, res) => {
 studentController.getOne = async(req, res) => {
     studentDAO.getOne(req.params.dni)  //El parametro de busqueda es mediante el dni
     .then(student => {
-        if(student != null) //Si hace match con alguno...
-            res.json(student) //trae unicamente a ese
+        if(student != null) {//Si hace match con alguno...
+            res.render('../src/views/edit',{student})
+        }
         else
             res.json({
                 status: "not found" //SI no regresa un mensaje de que no se encontro

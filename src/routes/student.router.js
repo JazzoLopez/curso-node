@@ -3,13 +3,15 @@ const {Router} = require('express');
 const router = Router();
 
 
-//Student
+//* Rutas basicas para comprobar con Thunder Client */ 
 // router.get('/getAll', studentController.getAll);
 // router.get('/getOne/:dni', studentController.getOne);
 // router.post('/insertOne', studentController.insertOne);
 // router.put('/updateOne/:dni', studentController.updateOne);
 // router.delete('/deleteOne/:dni', studentController.deleteOne);
 
+
+//Todo: Rutas modificadas para darle funcionalidad a los renderizados
 router.get('/getAll', studentController.getAll);
 router.get('/getOne/:dni', studentController.getOne);
 router.post('/insertOne', studentController.insertOne);

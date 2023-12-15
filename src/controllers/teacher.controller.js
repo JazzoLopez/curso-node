@@ -13,6 +13,7 @@ teacherController.getAll = async (req, res) => {
         });
 }
 
+
 teacherController.getOne = async (req, res) => {
     teacherDAO.getOne(req.params.employeenumber)
         .then(teacher => {

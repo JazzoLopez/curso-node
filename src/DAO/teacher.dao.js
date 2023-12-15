@@ -9,9 +9,7 @@ teacherDAO.getAll = async () => {
 // teacherDAO.getAll = async (employeenumber) => {
 //     const teachers = await Teacher.find({},{"employeenumber":1,"name":1,"lastname":1, "_id":0})
 //     return teachers;
-//     //"employeenumber":"Español"  filtrar y mostrar los que tengan la materia de Español
 
-// }
 
 teacherDAO.getOne = async (employeenumber) => {
     const teacher = await Teacher.findOne({employeenumber:employeenumber});

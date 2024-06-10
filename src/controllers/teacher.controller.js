@@ -4,7 +4,7 @@ const teacherController = {}
 teacherController.getAll = async (req, res) => {
     teacherDAO.getAll()
         .then(teachers => {
-            res.render('../src/views/index_teacher',{teachers});
+            res.render('../src/views/index_teacher', { teachers });
         })
         .catch(err => {
             res.json({
@@ -17,8 +17,8 @@ teacherController.getAll = async (req, res) => {
 teacherController.getOne = async (req, res) => {
     teacherDAO.getOne(req.params.employeenumber)
         .then(teacher => {
-            if (teacher != null){
-                res.render('../src/views/edit_teacher',{teacher})
+            if (teacher != null) {
+                res.render('../src/views/edit_teacher', { teacher })
             }
             else
                 res.json({
@@ -26,8 +26,8 @@ teacherController.getOne = async (req, res) => {
                 });
         })
         .catch(err => {
-            res.json({status:"resuest failed"})
-            
+            res.json({ status: "resuest failed" })
+
         })
 }
 
@@ -38,7 +38,7 @@ teacherController.insertOne = async (req, res) => {
         })
         .catch(err => {
             res.json({
-                status: "Request failed",message:err
+                status: "Request failed", message: err
             })
         })
 }
@@ -50,21 +50,21 @@ teacherController.updateOne = async (req, res) => {
         })
         .catch(err => {
             res.json({
-                status: "Request failed",message:err
+                status: "Request failed", message: err
             })
         })
 }
 
 teacherController.deleteOne = async (req, res) => {
     teacherDAO.deleteOne(req.params.employeenumber)
-    .then(result => {
-        res.redirect('/api/teachers/getAll')
-    })
-    .catch(err => {
-        res.json({
-            status: "request failed",message:err
+        .then(result => {
+            res.redirect('/api/teachers/getAll')
         })
-    });
+        .catch(err => {
+            res.json({
+                status: "request failed", message: err
+            })
+        });
 
 }
 module.exports = teacherController;

@@ -3,11 +3,12 @@ const express = require('express'); //*TRAEMOS A EXPRESS
 const morgan = require ('morgan');
 const studentRouter = require('./routes/student.router');
 const teacherRouter = require('./routes/teacher.router')
+const {config} = require('dotenv')
 
 const app = express(); //*Instanciamos y creamos la app del servidor
-
+config();
 //*Settings consifuraciones del servidor/Aplicación
-app.set('PORT',process.env.PORT || 3000);
+app.set('PORT',process.env.PORT);
 app.set('view engine', 'ejs'); //*Indicamos el motor de vistas ejs para responder un html
 //*Middlewares
 app.use(express.json());
